@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,8 +34,6 @@ public class SignUpFragment extends Fragment {
     private String mParam2;
     EditText name, email, pass, re_pass,phone;
     Button register;
-    FirebaseFirestore db;
-    private FirebaseAuth auth;
 
     public SignUpFragment() {
         // Required empty public constructor
@@ -96,20 +95,22 @@ public class SignUpFragment extends Fragment {
             String phoneValue = phone.getText().toString().trim();
             String passValue = pass.getText().toString().trim();
             String rePassValue = re_pass.getText().toString().trim();
-            auth = FirebaseAuth.getInstance();
-            if (email.getText().toString().isEmpty() || pass.getText().toString().isEmpty()) {
-                Toast.makeText(getActivity(), "Fill the required Fields", Toast.LENGTH_SHORT).show();
-            } else {
-                auth.createUserWithEmailAndPassword(emailValue, passValue).addOnCompleteListener(getActivity(), task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(getActivity(), "Login Register Successfully", Toast.LENGTH_SHORT).show();
-
-                    } else {
-                        Toast.makeText(getActivity(), "Weak Password!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            CollectionReference usersCollection = db.collection("user");
+            User user = new User();
+//            auth = FirebaseAuth.getInstance();
+//            if (email.getText().toString().isEmpty() || pass.getText().toString().isEmpty()) {
+//                Toast.makeText(getActivity(), "Fill the required Fields", Toast.LENGTH_SHORT).show();
+//            } else {
+//                auth.createUserWithEmailAndPassword(emailValue, passValue).addOnCompleteListener(getActivity(), task -> {
+//                    if (task.isSuccessful()) {
+//                        Toast.makeText(getActivity(), "Login Register Successfully", Toast.LENGTH_SHORT).show();
+//
+//                    } else {
+//                        Toast.makeText(getActivity(), "Weak Password!", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
             // Check if any required fields are empty
             if (TextUtils.isEmpty(nameValue) || TextUtils.isEmpty(emailValue) || TextUtils.isEmpty(phoneValue) ||
                     TextUtils.isEmpty(passValue) || TextUtils.isEmpty(rePassValue)) {
@@ -120,11 +121,22 @@ public class SignUpFragment extends Fragment {
                     Toast.makeText(getActivity(), "Passwords do not match", Toast.LENGTH_SHORT).show();
                     return; // Exit the method to prevent further execution
                 }
-                // Create a new User object
-                User user = new User();
+                usersCollection.whereEqualTo("email", emailValue)
+                        .get()
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot querySnapshot = task.getResult();
+                                if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                                    // Email already exists, show error message to the user
+                                    Toast.makeText(getActivity(), "Email already Exists", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                            }
+                        });
                 user.setEmail(emailValue);
                 user.setPassword(passValue);
                 user.setFname(nameValue);
+                user.setRole("user");
                 try {
                     String phone = phoneValue;
                     user.setPhone(phone);
@@ -134,20 +146,18 @@ public class SignUpFragment extends Fragment {
                     return; // Exit the method to prevent further execution
                 }
                 // Get Firestore instance and collection reference
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                CollectionReference usersCollection = db.collection("user");
 
                 // Generate a new document ID
                 String id;
                 try {
-                    id = usersCollection.document().getId();
+                    id = user.getFname()+"_"+usersCollection.document().getId();
+                    id = id.replaceAll("\\s", "");
                     user.setUid(id);
                 } catch (NumberFormatException e) {
                     // Handle the case when the phone value cannot be parsed
                     Toast.makeText(getActivity(), "Invalid ID", Toast.LENGTH_SHORT).show();
                     return; // Exit the method to prevent further execution
                 }
-
                 // Save the user to Firestore
                 usersCollection.document(id).set(user)
                         .addOnCompleteListener(task -> {

@@ -13,4 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="AppNavigationViewStyle" parent="Widget.Design.NavigationView">
+        <item name="itemIconTint">#7AA3FF</item>
+    </style>
 </resources>

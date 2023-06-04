@@ -9,9 +9,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="361dp"
-        android:layout_height="240dp"
-        android:layout_marginLeft="20dp"
+        android:layout_width="411dp"
+        android:layout_height="331dp"
         android:layout_marginTop="200dp"
         android:src="@mipmap/logo_foreground" />
 
@@ -19,8 +18,8 @@
         android:layout_width="84dp"
         android:layout_height="77dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="-220dp"
-        android:layout_marginTop="430dp"
+        android:layout_marginLeft="-245dp"
+        android:layout_marginTop="450dp"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/loading" />
