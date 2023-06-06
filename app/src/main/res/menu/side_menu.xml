@@ -16,22 +16,6 @@
         <item android:id="@+id/luxeries_menu"
             android:icon="@drawable/lux"
             android:title="Luxeries"/>
-<!--
-        <item android:id="@+id/location_menu"
-            android:icon="@drawable/locaton_icon"
-            android:title="Location"/>
-
-        <item android:id="@+id/security_menu"
-            android:icon="@drawable/security_icon"
-            android:title="Security"/>
-
-        <item android:id="@+id/contact_us_menu"
-            android:icon="@drawable/contact_icon"
-            android:title="Contact Us"/>
-
-        <item android:id="@+id/logout_menu"
-            android:icon="@drawable/logout_icon"
-            android:title="Logout"/>-->
     </group>
 
 
@@ -42,7 +26,7 @@
                 <item android:id="@+id/security_menu"
                     android:icon="@drawable/security_icon"
                     android:title="Security"/>
-c
+
                 <item android:id="@+id/contact_us_menu"
                     android:icon="@drawable/contact_icon"
                     android:title="Contact Us"/>
@@ -52,7 +36,5 @@ c
                     android:title="Logout"/>
             </menu>
         </item>
-
     </group>
-
 </menu>

@@ -18,6 +18,9 @@
             android:name=".admin_panel"
             android:exported="false" />
         <activity
+            android:name=".LoginFragment"
+            android:exported="false" />
+        <activity
             android:name=".FragmentActivity"
             android:exported="false" />
         <activity
