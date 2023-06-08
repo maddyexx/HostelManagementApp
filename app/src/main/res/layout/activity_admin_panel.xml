@@ -5,11 +5,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="admin_panel"
+    tools:context=".admin_panel"
     android:id="@+id/drawableLayout"
     tools:openDrawer="start"
     android:fitsSystemWindows="true">
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:id="@+id/relative"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <FrameLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/container"/>-->
+<!--    </RelativeLayout>-->
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_bg">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/custom_bg">
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_bg"
+                app:title="Rooms"
+                app:navigationIcon="@drawable/dashboard_icon"
+                app:titleTextColor="@color/white"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/toobar"
+                android:elevation="4dp"
+                android:theme="@style/Theme.Design.NoActionBar"
+                />
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_search_24"
+                    android:layout_marginLeft="10dp"
+                    android:padding="8dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="Search"
+                    android:textColorHint="#858585"
+                    android:padding="8dp"/>
+
+            </LinearLayout>
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:text="Add"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/roomaddbtn"
+                android:layout_gravity="right"
+                android:drawableLeft="@drawable/baseline_add_task_24"
+                android:backgroundTint="#64A81F"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyleruser"
+                android:layout_width="380dp"
+                android:layout_gravity="center"
+                android:layout_height="650dp"
+                android:layout_marginTop="10dp"
+                />
+            <nl.joery.animatedbottombar.AnimatedBottomBar
+                android:id="@+id/bottom_bar"
+                android:background="@drawable/custom_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:abb_selectedTabType="text"
+                app:abb_indicatorAppearance="round"
+                app:abb_indicatorMargin="16dp"
+                app:abb_indicatorHeight="4dp"
+                app:abb_tabs="@menu/tabs"
+                app:abb_selectedIndex="1"
+                app:iconTint="@android:color/white"/>
+
+        </LinearLayout>
+    </ScrollView>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -18,200 +106,4 @@
         app:headerLayout="@layout/header_file"
         app:menu="@menu/side_menu"
         android:layout_gravity="start"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/custom_bg">
-
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/custom_bg"
-            >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="VIP HOSTEL ADMIN"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:layout_marginTop="35dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:layout_marginBottom="50dp"/>
-            <!-- Part 1: Requests for Rooms -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:text="Room Reservation Request"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:background="#7AA3FF"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textColor="@color/white"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/purple_500"
-                android:orientation="horizontal"
-                android:gravity="left">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="ID"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="65dp"
-                    android:text="Date"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="90dp"
-                    android:text="Room"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/roomRequestsRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/card_bg"
-                />
-
-            <!-- Part 2: Add, Delete,Update Room Options with Rooms List -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rooms"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:background="#7AA3FF"
-                android:gravity="center"
-                android:layout_gravity="center"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/purple_500"
-                android:orientation="horizontal"
-                android:gravity="left">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="Room No"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="50dp"
-                    android:text="Status"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="50dp"
-                    android:text="Guests"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
-                <Button
-                    android:layout_width="70dp"
-                    android:layout_height="40dp"
-                    android:text="Add"
-                    android:id="@+id/roomaddbtn"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="70dp"
-                    android:backgroundTint="#64A81F"
-                    />
-            </LinearLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyleruser"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/card_bg"
-                />
-
-            <!-- Part 3: Payment List with Labels -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Payment List"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:background="#7AA3FF"
-                android:gravity="center"
-                android:layout_gravity="center"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@color/purple_500"
-                android:orientation="horizontal"
-                android:gravity="left">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:text="ID"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="65dp"
-                    android:text="Date"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="90dp"
-                    android:text="Room"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
-            </LinearLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/paymentRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@drawable/card_bg"
-                />
-        </LinearLayout>
-    </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

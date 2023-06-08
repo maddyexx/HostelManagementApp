@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".about">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#201a30">
+
+        <ImageView
+            android:id="@+id/image_header"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/room_image" />
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_header"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:text="About Us"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Content -->
+        <TextView
+            android:id="@+id/text_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_title"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Welcome to our hostel! We provide comfortable and affordable accommodation for travelers. Our hostel is located in a convenient location with easy access to popular tourist attractions. Our friendly staff is here to assist you during your stay. Enjoy your visit!"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <!-- Contact Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="Contact Us"
+            android:textColor="#ffffff"
+            android:background="@drawable/confirm_button_bg"
+            android:elevation="4dp" />
+    </RelativeLayout>
+</FrameLayout>

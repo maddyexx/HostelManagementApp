@@ -1,15 +1,20 @@
 package com.example.firstfirebaseproject;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -75,6 +80,9 @@ public class LoginFragment extends Fragment {
 //        }
     }
     private View rootView;
+    private LottieAnimationView animationView;
+    private Dialog progressDialog;
+    private Handler handler;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -86,14 +94,41 @@ public class LoginFragment extends Fragment {
     }
 
     private void initComponents() {
+        animationView = rootView.findViewById(R.id.animationview);
+        animationView.setVisibility(View.INVISIBLE);
+        progressDialog = new Dialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        ViewGroup animationViewParent = new FrameLayout(getActivity());
+        animationViewParent.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        ViewGroup currentParent = (ViewGroup) animationView.getParent();
+        if (currentParent != null) {
+            // Remove the circularProgressIndicator from its current parent
+            currentParent.removeView(animationView);
+        }
+        animationViewParent.addView(animationView);
+        progressDialog.setContentView(animationViewParent);
         email = rootView.findViewById(R.id.email);
         pass = rootView.findViewById(R.id.password);
         login = rootView.findViewById(R.id.login_btn);
+        handler = new Handler();
     }
     private void settingUpListeners() {
 //        auth = FirebaseAuth.getInstance();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         login.setOnClickListener(view -> {
+            animationView.setVisibility(View.VISIBLE);
+            animationView.playAnimation();
+
+            progressDialog.show();
+
+            handler.postDelayed(() -> {
+                progressDialog.dismiss();
+                animationView.setVisibility(View.INVISIBLE);
+                animationView.cancelAnimation();
+            }, 3000);
             CollectionReference usersCollection = db.collection("user");
             String em = email.getText().toString();
             String password = pass.getText().toString();

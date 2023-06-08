@@ -4,15 +4,24 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +31,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -37,51 +48,37 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import nl.joery.animatedbottombar.AnimatedBottomBar;
+
 public class admin_panel extends AppCompatActivity {
-    Toolbar toobar;
+    Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     RecyclerView recyclerViewuser, roomreservation, paymentlist;
     Button addbtn;
     ImageView delete_icon;
-    @SuppressLint("MissingInflatedId")
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.logout_menu) {
-            // Handle the logout functionality here
-            // For example, start the login activity
-            Intent intent = new Intent(admin_panel.this, FragmentActivity.class);
-            startActivity(intent);
-            finish(); // Optional: Close the current activity
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+    private MenuItem selectedMenuItem;
+    AnimatedBottomBar bottomBar;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
-        toobar = findViewById(R.id.toobar);
-        drawerLayout = findViewById(R.id.drawableLayout);
-        navigationView = findViewById(R.id.navigation_menu);
         recyclerViewuser = findViewById(R.id.recyleruser);
         roomreservation = findViewById(R.id.roomRequestsRecyclerView);
-        roomreservation.setLayoutManager(new LinearLayoutManager(this));
+//        roomreservation.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewuser.setLayoutManager(new LinearLayoutManager(this));
         paymentlist = findViewById(R.id.paymentRecyclerView);
         addbtn = findViewById(R.id.roomaddbtn);
         delete_icon = findViewById(R.id.deleteIcon);
-        paymentlist.setLayoutManager(new LinearLayoutManager(this));
-        setSupportActionBar(toobar);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout, toobar,R.string.navigation_open,R.string.navigation_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        bottomBar = findViewById(R.id.bottom_bar);
+//        paymentlist.setLayoutManager(new LinearLayoutManager(this));
         fetchRoomData();
-        fetchReservationData();
-        fetchPaymentData();
+//        fetchReservationData();
+//        fetchPaymentData();
+        setUpDrawer();
+        bottomNavigationSetUp();
+        selectMenuItem(selectedMenuItem);
         addbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +102,7 @@ public class admin_panel extends AppCompatActivity {
                     String status = document.getString("status_Rooms");
                     String room_no = document.getString("room_no_Rooms");
                     String uid = document.getString("guests_Rooms");
-                    newEntries.add(new UserModel(room_no, uid, status));
+                    newEntries.add(new UserModel("Room No: "+room_no,"Guests: "+uid,"Occupied: "+status));
                 }
 
                 // Create an instance of your RecyclerView adapter and pass the paymentList
@@ -117,6 +114,100 @@ public class admin_panel extends AppCompatActivity {
             }
         });
     }
+
+    private void bottomNavigationSetUp() {
+        bottomBar.setBadgeTextColor(ContextCompat.getColor(this, R.color.white));
+        bottomBar.setIndicatorColor(ContextCompat.getColor(this, R.color.white));
+        bottomBar.setTabColor(ContextCompat.getColor(this, R.color.white));
+        bottomBar.setTabColorSelected(ContextCompat.getColor(this, R.color.white));
+        bottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
+            @Override
+            public void onTabSelected(int lastIndex, AnimatedBottomBar.Tab lastTab, int newIndex, AnimatedBottomBar.Tab newTab) {
+                Log.d("bottom_bar", "Selected index: " + newIndex + ", title: " + newTab.getTitle());
+
+                switch (newTab.getId()) {
+                    case R.id.item_1:
+                        // Handle selection of tab item 1
+                        Intent intent1 = new Intent(admin_panel.this, home_panel.class);
+                        startActivity(intent1);
+                        break;
+                    case R.id.item_2:
+                        // Handle selection of tab item 2
+//                        Intent intent2 = new Intent(admin_panel.this, DestinationActivity2.class);
+//                        startActivity(intent2);
+                        break;
+                    case R.id.item_3:
+                        // Handle selection of tab item 3
+                        Intent intent3 = new Intent(admin_panel.this, FragmentActivity.class);
+                        startActivity(intent3);
+                        break;
+                    // Add more cases for additional tab items as needed
+                }
+            }
+
+            @Override
+            public void onTabReselected(int index, AnimatedBottomBar.Tab tab) {
+                Log.d("bottom_bar", "Reselected index: " + index + ", title: " + tab.getTitle());
+            }
+        });
+    }
+    private void setUpDrawer(){
+        navigationView = findViewById(R.id.navigation_menu);
+        Menu menu = navigationView.getMenu();
+        selectedMenuItem = menu.findItem(R.id.room_menu);
+        toolbar = findViewById(R.id.toobar);
+        drawerLayout = findViewById(R.id.drawableLayout);
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout, toolbar,R.string.navigation_open,R.string.navigation_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // Handle navigation item clicks here
+                int id = item.getItemId();
+
+                if (id == R.id.home_menu) {
+                    // Perform action for item1
+                    // Example: Load fragment or start activity
+                    selectMenuItem(item);
+                } else if (id == R.id.about_menu) {
+                    // Perform action for item2
+                    // Example: Load fragment or start activity
+                    selectMenuItem(item);
+                    Intent i = new Intent(admin_panel.this, about_panel.class);
+                    startActivity(i);
+                } else if (id == R.id.contact_us_menu) {
+                    // Perform action for item3
+                    // Example: Load fragment or start activity
+                    //loadFragment(new Item3Fragment());
+                    selectMenuItem(item);
+                    Intent i = new Intent(admin_panel.this, user_panel.class);
+                    startActivity(i);
+                } else if (id == R.id.logout_menu) {
+                    Intent intent = new Intent(admin_panel.this, FragmentActivity.class);
+                    startActivity(intent);
+                }
+                // Close the navigation drawer
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
+    }
+    private void selectMenuItem(MenuItem item) {
+        if (selectedMenuItem != null) {
+            selectedMenuItem.setChecked(false);
+        }
+        selectedMenuItem = item;
+        selectedMenuItem.setChecked(true);
+    }
+//    private void loadFragment(Fragment fragment) {
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.container, fragment)
+//                .commit();
+//    }
     private void showPopupForm() {
         Dialog dialog = new Dialog(admin_panel.this);
         dialog.setContentView(R.layout.popup_form);
@@ -190,9 +281,9 @@ public class admin_panel extends AppCompatActivity {
                         String id = document.getId();
                         String date = document.getString("date");
                         String room_no = document.getString("room_no");
-                        String uid = document.getString("user_id");
+                        String uid = document.getString("id");
                         String status = document.getString("status");
-                        arrPayment.add(new PaymentModel("3", "10-20-24", "3","pending"));
+                        arrPayment.add(new PaymentModel(uid, date, room_no,status));
                     }
                     RecyclePaymentAdapter adapter1 = new RecyclePaymentAdapter(admin_panel.this, arrPayment);
                     paymentlist.setAdapter(adapter1);
@@ -217,7 +308,7 @@ public class admin_panel extends AppCompatActivity {
                         String id = document.getId();
                         String date = document.getString("date");
                         String room_no = document.getString("room_no");
-                        String uid = document.getString("guests");
+                        String uid = document.getString("id");
                         arrReservation.add(new RoomReservationModel(uid, date, room_no));
                     }
                     RecycleReservationAdapter adapter1 = new RecycleReservationAdapter(admin_panel.this, arrReservation);
@@ -246,7 +337,7 @@ public class admin_panel extends AppCompatActivity {
                         String status = document.getString("status_Rooms");
                         String room_no = document.getString("room_no_Rooms");
                         String uid = document.getString("guests_Rooms");
-                        arrUsers.add(new UserModel(room_no, uid, status));
+                        arrUsers.add(new UserModel("Room No: "+room_no,"Guests: "+uid,"Occupied: "+status));
                     }
 
                     // Create an instance of your RecyclerView adapter and pass the paymentList

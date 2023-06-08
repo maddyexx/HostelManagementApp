@@ -35,12 +35,13 @@ public class RecyclePaymentAdapter extends RecyclerView.Adapter<RecyclePaymentAd
         holder.u_no_p.setText(String.valueOf(arrPayment.get(position).user_id_payment));
         holder.sta_p.setText(arrPayment.get(position).date_of_res_payment);
         holder.pay_btn.setText(arrPayment.get(position).payment_status);
-        if (arrPayment.get(position).payment_status.equals("pending")) {
+        if (arrPayment.get(position).payment_status.equals("pending")||arrPayment.get(position).payment_status.equals("Pending")) {
             int color = Color.RED;
             holder.pay_btn.setBackgroundTintList(ColorStateList.valueOf(color));
         } else {
             int color = Color.GREEN;
             holder.pay_btn.setBackgroundTintList(ColorStateList.valueOf(color));
+            holder.pay_btn.setTextColor(Color.DKGRAY);
         }
     }
 
