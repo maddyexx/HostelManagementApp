@@ -5,19 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin_panel"
+    tools:context=".RoomViewUser"
     android:id="@+id/drawableLayout"
     tools:openDrawer="start"
     android:fitsSystemWindows="true">
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:id="@+id/relative"-->
-<!--        android:layout_height="match_parent">-->
-<!--        <FrameLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:id="@+id/container"/>-->
-<!--    </RelativeLayout>-->
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:id="@+id/relative"-->
+    <!--        android:layout_height="match_parent">-->
+    <!--        <FrameLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:id="@+id/container"/>-->
+    <!--    </RelativeLayout>-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -66,14 +66,14 @@
 
             </LinearLayout>
             <Button
-                android:layout_width="120dp"
+                android:layout_width="140dp"
                 android:layout_height="40dp"
-                android:text="Add"
+                android:text="Reserve"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:id="@+id/roomaddbtn"
+                android:id="@+id/reservebtn_user"
                 android:layout_gravity="right"
-                android:drawableLeft="@drawable/baseline_add_task_24"
+                android:drawableLeft="@drawable/baseline_reservation_border_24"
                 android:backgroundTint="#64A81F"
                 />
             <androidx.recyclerview.widget.RecyclerView
@@ -105,6 +105,6 @@
         style="@style/AppNavigationViewStyle"
         android:id="@+id/navigation_menu"
         app:headerLayout="@layout/header_file"
-        app:menu="@menu/side_menu"
+        app:menu="@menu/side_menu_user"
         android:layout_gravity="start"/>
 </androidx.drawerlayout.widget.DrawerLayout>

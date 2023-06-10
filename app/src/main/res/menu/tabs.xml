@@ -11,6 +11,16 @@
         android:titleTextColor="@android:color/white"
         android:title="Rooms" />
     <item
+        android:id="@+id/item_4"
+        android:icon="@drawable/baseline_price_check_24"
+        android:titleTextColor="@android:color/white"
+        android:title="Payment" />
+    <item
+        android:id="@+id/item_5"
+        android:icon="@drawable/baseline_reservation_border_24"
+        android:titleTextColor="@android:color/white"
+        android:title="Reservations" />
+    <item
         android:id="@+id/item_3"
         android:icon="@drawable/logout_icon"
         android:titleTextColor="@android:color/white"

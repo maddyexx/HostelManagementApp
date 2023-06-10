@@ -40,7 +40,7 @@ public class RecyclerUserAdapter extends RecyclerView.Adapter<RecyclerUserAdapte
         this.entries = newEntries;
         notifyDataSetChanged();
     }
-    RecyclerUserAdapter(admin_panel context, ArrayList<UserModel> arrUsers, List<DocumentSnapshot> documents){
+    RecyclerUserAdapter(Context context, ArrayList<UserModel> arrUsers, List<DocumentSnapshot> documents){
         this.context = context;
         this.arrUsers = arrUsers;
         this.documents = documents;
@@ -69,7 +69,7 @@ public class RecyclerUserAdapter extends RecyclerView.Adapter<RecyclerUserAdapte
         return arrUsers.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView r_no, u_no, sta;
         private String documentId;
         ImageView delete_btn, edit_btn;

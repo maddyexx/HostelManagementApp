@@ -5,19 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin_panel"
+    tools:context=".reservation_panel"
     android:id="@+id/drawableLayout"
     tools:openDrawer="start"
     android:fitsSystemWindows="true">
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:id="@+id/relative"-->
-<!--        android:layout_height="match_parent">-->
-<!--        <FrameLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:id="@+id/container"/>-->
-<!--    </RelativeLayout>-->
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:id="@+id/relative"-->
+    <!--        android:layout_height="match_parent">-->
+    <!--        <FrameLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:id="@+id/container"/>-->
+    <!--    </RelativeLayout>-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_bg"
-                app:title="Rooms"
+                app:title="Reservation Requests"
                 app:navigationIcon="@drawable/dashboard_icon"
                 app:titleTextColor="@color/white"
                 android:layout_marginBottom="5dp"
@@ -56,7 +56,6 @@
                     android:padding="8dp"/>
 
                 <EditText
-                    android:id="@+id/searchEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
@@ -65,23 +64,12 @@
                     android:padding="8dp"/>
 
             </LinearLayout>
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:text="Add"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:id="@+id/roomaddbtn"
-                android:layout_gravity="right"
-                android:drawableLeft="@drawable/baseline_add_task_24"
-                android:backgroundTint="#64A81F"
-                />
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyleruser"
+                android:id="@+id/roomRequestsRecyclerView"
                 android:layout_width="380dp"
                 android:layout_gravity="center"
                 android:layout_height="650dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 />
             <nl.joery.animatedbottombar.AnimatedBottomBar
                 android:id="@+id/bottom_bar"
@@ -93,10 +81,10 @@
                 app:abb_indicatorAppearance="round"
                 app:abb_indicatorMargin="16dp"
                 app:abb_indicatorHeight="4dp"
+                android:layout_marginTop="30dp"
                 app:abb_tabs="@menu/tabs"
-                app:abb_selectedIndex="1"
+                app:abb_selectedIndex="3"
                 app:iconTint="@android:color/white"/>
-
         </LinearLayout>
     </ScrollView>
     <com.google.android.material.navigation.NavigationView

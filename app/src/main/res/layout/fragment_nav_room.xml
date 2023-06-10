@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin_panel"
-    android:id="@+id/drawableLayout"
-    tools:openDrawer="start"
-    android:fitsSystemWindows="true">
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:id="@+id/relative"-->
-<!--        android:layout_height="match_parent">-->
-<!--        <FrameLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:id="@+id/container"/>-->
-<!--    </RelativeLayout>-->
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".nav_room">
 
+    <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,45 +54,24 @@
 
             </LinearLayout>
             <Button
-                android:layout_width="120dp"
+                android:layout_width="140dp"
                 android:layout_height="40dp"
-                android:text="Add"
+                android:text="Reserve"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:id="@+id/roomaddbtn"
+                android:id="@+id/reservationButton"
                 android:layout_gravity="right"
-                android:drawableLeft="@drawable/baseline_add_task_24"
+                android:drawableLeft="@drawable/baseline_reservation_border_24"
                 android:backgroundTint="#64A81F"
                 />
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyleruser"
+                android:id="@+id/roomRecyclerView"
                 android:layout_width="380dp"
                 android:layout_gravity="center"
                 android:layout_height="650dp"
                 android:layout_marginTop="10dp"
                 />
-            <nl.joery.animatedbottombar.AnimatedBottomBar
-                android:id="@+id/bottom_bar"
-                android:background="@drawable/custom_bg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                app:abb_selectedTabType="text"
-                app:abb_indicatorAppearance="round"
-                app:abb_indicatorMargin="16dp"
-                app:abb_indicatorHeight="4dp"
-                app:abb_tabs="@menu/tabs"
-                app:abb_selectedIndex="1"
-                app:iconTint="@android:color/white"/>
-
         </LinearLayout>
     </ScrollView>
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        style="@style/AppNavigationViewStyle"
-        android:id="@+id/navigation_menu"
-        app:headerLayout="@layout/header_file"
-        app:menu="@menu/side_menu"
-        android:layout_gravity="start"/>
-</androidx.drawerlayout.widget.DrawerLayout>
+
+</FrameLayout>

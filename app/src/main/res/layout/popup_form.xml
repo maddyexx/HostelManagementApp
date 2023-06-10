@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/custom_bg"
     android:padding="16dp">
@@ -38,7 +40,7 @@
                 android:id="@+id/roomno_popup"
                 android:layout_width="300dp"
                 android:layout_height="30dp"
-                android:inputType="textEmailAddress"
+                android:inputType="number"
                 android:textStyle="bold"
                 android:textColorHint="#DAC3C3"
                 android:textColor="@color/white"
@@ -78,11 +80,11 @@
                 android:id="@+id/occupy_popup"
                 android:layout_width="300dp"
                 android:layout_height="30dp"
-                android:inputType="textEmailAddress"
                 android:textStyle="bold"
                 android:textColorHint="#DAC3C3"
                 android:textColor="@color/white"
                 android:textSize="18sp"
+                android:inputType="text"
                 android:background="@drawable/underline_input"
                 android:layout_marginLeft="50dp"/>
             <ImageView
@@ -116,7 +118,7 @@
                 android:id="@+id/guests_popup"
                 android:layout_width="300dp"
                 android:layout_height="30dp"
-                android:inputType="textEmailAddress"
+                android:inputType="number"
                 android:textStyle="bold"
                 android:textColorHint="#DAC3C3"
                 android:textColor="@color/white"
@@ -129,6 +131,94 @@
                 android:layout_marginTop="10px"
                 android:layout_marginLeft="40px"
                 android:src="@drawable/baseline_numbers_24"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="850px"
+        android:layout_height="160px"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/input_bg_email"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room Type"
+            android:layout_marginTop="20px"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="130px"
+            android:layout_marginBottom="5px"
+            android:textColor="@android:color/white"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/room_type_popup"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:textStyle="bold"
+                android:textColorHint="#DAC3C3"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:inputType="text"
+                android:background="@drawable/underline_input"
+                android:layout_marginLeft="50dp"/>
+<!--            <Spinner-->
+<!--                android:id="@+id/room_type_spinner"-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColorHint="#DAC3C3"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="18sp"-->
+<!--                android:layout_marginLeft="50dp"/>-->
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:layout_marginLeft="40px"
+                android:src="@drawable/baseline_bed_24"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="850px"
+        android:layout_height="160px"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/input_bg_email"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price of Room"
+            android:layout_marginTop="20px"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="130px"
+            android:layout_marginBottom="5px"
+            android:textColor="@android:color/white"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/price_popup"
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:inputType="number"
+                android:textStyle="bold"
+                android:textColorHint="#DAC3C3"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@drawable/underline_input"
+                android:layout_marginLeft="50dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:layout_marginLeft="40px"
+                android:src="@drawable/baseline_price_check_24"/>
         </RelativeLayout>
     </LinearLayout>
     <Button

@@ -165,7 +165,7 @@ public class LoginFragment extends Fragment {
                                                             // Navigate to user panel
                                                             email.setText("");
                                                             pass.setText("");
-                                                            Intent adminIntent = new Intent(getActivity(), admin_panel.class);
+                                                            Intent adminIntent = new Intent(getActivity(), home_panel.class);
                                                             startActivity(adminIntent);
                                                         }
                                                     } else {

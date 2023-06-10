@@ -5,19 +5,18 @@
             android:icon="@drawable/home_icon"
             android:title="Home"/>
 
-        <item android:id="@+id/payment_menu"
-            android:icon="@drawable/baseline_price_check_24"
-            android:title="Payment History"/>
+        <item android:id="@+id/about_menu_user"
+            android:icon="@drawable/about_us_icon"
+            android:title="About us"/>
 
-        <item android:id="@+id/reservation_menu"
-            android:icon="@drawable/baseline_reservation_border_24"
-            android:title="Reservations"/>
-
-        <item android:id="@+id/room_menu"
+        <item android:id="@+id/room_menu_user"
             android:icon="@drawable/room_icon"
             android:title="Rooms"/>
+        <item android:id="@+id/payment_menu_user"
+            android:icon="@drawable/room_icon"
+            android:title="Payments"/>
 
-        <item android:id="@+id/luxeries_menu"
+        <item android:id="@+id/luxeries_menu_user"
             android:icon="@drawable/lux"
             android:title="Luxeries"/>
     </group>
@@ -31,11 +30,11 @@
                     android:icon="@drawable/security_icon"
                     android:title="Security"/>
 
-                <item android:id="@+id/settings_menu"
-                    android:icon="@drawable/baseline_settings_24"
-                    android:title="Settings"/>
+                <item android:id="@+id/contact_us_menu_user"
+                    android:icon="@drawable/contact_icon"
+                    android:title="Contact Us"/>
 
-                <item android:id="@+id/logout_menu"
+                <item android:id="@+id/logout_menu_user"
                     android:icon="@drawable/logout_icon"
                     android:title="Logout"/>
             </menu>

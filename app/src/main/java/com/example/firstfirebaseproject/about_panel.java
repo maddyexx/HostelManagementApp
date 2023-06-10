@@ -28,7 +28,7 @@ public class about_panel extends AppCompatActivity {
         setContentView(R.layout.activity_about_panel);
         myButton = findViewById(R.id.button_contact);
         myButton.setOnClickListener(view -> {
-            startActivity(new Intent(new Intent(about_panel.this, contact.class)));
+            startActivity(new Intent(new Intent(about_panel.this, contact_us.class)));
         });
         setUpDrawer();
         selectMenuItem(selectedMenuItem);
@@ -82,7 +82,7 @@ public class about_panel extends AppCompatActivity {
     private void setUpDrawer() {
         navigationView = findViewById(R.id.navigation_menu);
         Menu menu = navigationView.getMenu();
-        selectedMenuItem = menu.findItem(R.id.about_menu);
+        selectedMenuItem = menu.findItem(R.id.payment_menu);
         toolbar = findViewById(R.id.toobar);
         drawerLayout = findViewById(R.id.drawableLayout);
         setSupportActionBar(toolbar);
@@ -104,11 +104,11 @@ public class about_panel extends AppCompatActivity {
                     Intent i = new Intent(about_panel.this, admin_panel.class);
                     startActivity(i);
                     selectMenuItem(item);
-                } else if (id == R.id.about_menu) {
+                } else if (id == R.id.payment_menu) {
                     // Perform action for item2
                     // Example: Load fragment or start activity
                     selectMenuItem(item);
-                } else if (id == R.id.contact_us_menu) {
+                } else if (id == R.id.reservation_menu) {
                     // Perform action for item3
                     // Example: Load fragment or start activity
                     //loadFragment(new Item3Fragment());

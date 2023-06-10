@@ -4,70 +4,84 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
-public class home_panel extends AppCompatActivity {
+public class reservation_panel extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
+    RecyclerView  roomreservation;
+    Button addbtn;
+    ImageView delete_icon;
     private MenuItem selectedMenuItem;
     AnimatedBottomBar bottomBar;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_panel);
+        setContentView(R.layout.activity_reservation_panel);
+        roomreservation = findViewById(R.id.roomRequestsRecyclerView);
+        roomreservation.setLayoutManager(new LinearLayoutManager(this));
+        bottomBar = findViewById(R.id.bottom_bar);
+        fetchReservationData();
         setUpDrawer();
         bottomNavigationSetUp();
         selectMenuItem(selectedMenuItem);
-        cardIntent();
     }
+    private void fetchReservationData() {
+        CollectionReference paymentCollectionRef = FirebaseFirestore.getInstance().collection("Reservation_Request");
 
-    private void cardIntent() {
-        CardView cardView=findViewById(R.id.card_view);
-        CardView cardView2=findViewById(R.id.card_view2);
-        CardView cardView3=findViewById(R.id.card_view3);
-        cardView.setOnClickListener(new View.OnClickListener() {
+        Task<QuerySnapshot> querySnapshotTask = paymentCollectionRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onClick(View v) {
-                // Start the activity here
-                Intent intent = new Intent(home_panel.this, admin_panel.class);
-                startActivity(intent);
-            }
-        });
-        cardView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the activity here
-                Intent intent = new Intent(home_panel.this, reservation_panel.class);
-                startActivity(intent);
-            }
-        });
-        cardView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the activity here
-                Intent intent = new Intent(home_panel.this, payment_panel.class);
-                startActivity(intent);
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    // Data successfully fetched
+                    ArrayList<RoomReservationModel> arrReservation = new ArrayList<>();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        // Extract data from the document and create a PaymentModel object
+                        String id = document.getId();
+                        String date = document.getString("date");
+                        String room_no = document.getString("room_no");
+                        String uid = document.getString("id");
+                        arrReservation.add(new RoomReservationModel("User Id: "+uid,"Date: "+ date,"Room No: "+ room_no));
+                    }
+                    RecycleReservationAdapter adapter1 = new RecycleReservationAdapter(reservation_panel.this, arrReservation);
+                    roomreservation.setAdapter(adapter1);
+                } else {
+                    // Failed to fetch data
+                    Toast.makeText(reservation_panel.this, "Connection Error", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
-
     private void bottomNavigationSetUp() {
-        bottomBar = findViewById(R.id.bottom_bar);
         bottomBar.setBadgeTextColor(ContextCompat.getColor(this, R.color.white));
         bottomBar.setIndicatorColor(ContextCompat.getColor(this, R.color.white));
         bottomBar.setTabColor(ContextCompat.getColor(this, R.color.white));
@@ -80,32 +94,32 @@ public class home_panel extends AppCompatActivity {
                 switch (newTab.getId()) {
                     case R.id.item_1:
                         // Handle selection of tab item 1
-//                        Intent intent1 = new Intent(home_panel.this, home_panel.class);
-//                        overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);
-//                        startActivity(intent1);
+                        Intent intent1 = new Intent(reservation_panel.this, home_panel.class);
+                        overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);
+                        startActivity(intent1);
                         break;
                     case R.id.item_2:
                         // Handle selection of tab item 2
-                        Intent intent2 = new Intent(home_panel.this, admin_panel.class);
+                        Intent intent2 = new Intent(reservation_panel.this, admin_panel.class);
+                        overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);
                         startActivity(intent2);
                         break;
                     case R.id.item_3:
                         // Handle selection of tab item 3
-                        Intent intent3 = new Intent(home_panel.this, FragmentActivity.class);
+                        Intent intent3 = new Intent(reservation_panel.this, FragmentActivity.class);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         startActivity(intent3);
                         break;
                     case R.id.item_4:
                         // Handle selection of tab item 3
-                        Intent intent4 = new Intent(home_panel.this, payment_panel.class);
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        Intent intent4 = new Intent(reservation_panel.this, payment_panel.class);
+                        overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_right);
                         startActivity(intent4);
                         break;
                     case R.id.item_5:
                         // Handle selection of tab item 3
-                        Intent intent5 = new Intent(home_panel.this, reservation_panel.class);
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        startActivity(intent5);
+//                        Intent intent5 = new Intent(reservation_panel.this, reservation_panel.class);
+//                        startActivity(intent5);
                         break;
                     // Add more cases for additional tab items as needed
                 }
@@ -120,7 +134,7 @@ public class home_panel extends AppCompatActivity {
     private void setUpDrawer(){
         navigationView = findViewById(R.id.navigation_menu);
         Menu menu = navigationView.getMenu();
-        selectedMenuItem = menu.findItem(R.id.home_menu);
+        selectedMenuItem = menu.findItem(R.id.room_menu);
         toolbar = findViewById(R.id.toobar);
         drawerLayout = findViewById(R.id.drawableLayout);
         setSupportActionBar(toolbar);
@@ -139,30 +153,25 @@ public class home_panel extends AppCompatActivity {
                     // Perform action for item1
                     // Example: Load fragment or start activity
                     selectMenuItem(item);
-//                    Intent i = new Intent(home_panel.this, home_panel.class);
-//                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//                    startActivity(i);
+                    Intent i = new Intent(reservation_panel.this, home_panel.class);
+                    startActivity(i);
                 } else if (id == R.id.payment_menu) {
                     // Perform action for item2
                     // Example: Load fragment or start activity
                     selectMenuItem(item);
-                    Intent i = new Intent(home_panel.this, payment_panel.class);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    Intent i = new Intent(reservation_panel.this, payment_panel.class);
                     startActivity(i);
                 } else if (id == R.id.reservation_menu) {
                     // Perform action for item3
                     selectMenuItem(item);
-                    Intent i = new Intent(home_panel.this, reservation_panel.class);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    startActivity(i);
+//                    Intent i = new Intent(admin_panel.this, reservation_panel.class);
+//                    startActivity(i);
                 } else if (id == R.id.logout_menu) {
-                    Intent intent = new Intent(home_panel.this, FragmentActivity.class);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    Intent intent = new Intent(reservation_panel.this, FragmentActivity.class);
                     startActivity(intent);
                 }
                 else if (id == R.id.room_menu) {
-                    Intent intent = new Intent(home_panel.this, admin_panel.class);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    Intent intent = new Intent(reservation_panel.this, admin_panel.class);
                     startActivity(intent);
                 }
                 // Close the navigation drawer

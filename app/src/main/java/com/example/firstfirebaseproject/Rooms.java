@@ -5,12 +5,15 @@ public class Rooms {
     private String room_no_Rooms;
     private String status_Rooms;
     private String room_id;
-
+    private String price;
+    private String room_type;
     public Rooms() {
         this.room_id = "";
-        guests_Rooms = "";
-        room_no_Rooms = "";
-        status_Rooms = "";
+        this.guests_Rooms = "";
+        this.room_no_Rooms = "";
+        this.status_Rooms = "";
+        this.price = "";
+        this.room_type = "";
     }
 
     public String getGuests_Rooms() {
@@ -43,5 +46,20 @@ public class Rooms {
 
     public void setRoom_id(String room_id) {
         this.room_id = room_id;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+    public void setRoom_type(String price) {
+        this.price = price;
+    }
+
+    public String getRoom_type() {
+        return room_type;
     }
 }

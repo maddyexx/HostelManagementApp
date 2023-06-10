@@ -1,44 +1,57 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150px"
-        android:backgroundTint="#EDEDED"
+        android:layout_height="220px"
+        android:layout_gravity="center"
+        android:backgroundTint="#201a30"
         >
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/bed"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             >
             <TextView
-                android:id="@+id/userid"
+                android:id="@+id/roomno"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textStyle="bold"
+                android:layout_marginTop="15dp"
                 android:textSize="15sp"
-                android:layout_marginLeft="15dp"
-                android:text="1"
+                android:textColor="@color/white"
+                android:layout_marginLeft="75dp"
+                android:text="Room No: 1"
                 />
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="yes"
-                android:layout_marginLeft="60dp"
+                android:text="Date: 12-03-2023"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="75dp"
                 android:textSize="15sp"
                 />
             <TextView
-                android:id="@+id/roomno"
+                android:id="@+id/userid"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="5"
-                android:layout_marginLeft="80dp"
+                android:text="User Id: 5"
+                android:textColor="@color/white"
+                android:layout_marginLeft="75dp"
                 android:textSize="15sp"
                 />
         </LinearLayout>
@@ -60,7 +73,7 @@
                 android:layout_gravity="center"
                 android:layout_height="24dp"
                 android:layout_marginRight="50px"
-                android:layout_marginLeft="80px"
+                android:layout_marginLeft="60px"
                 android:src="@drawable/baseline_delete_24" />
 
             <!-- Add other views for room details here -->
@@ -70,6 +83,8 @@
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:dividerColor="#303030"
+        android:layout_marginLeft="65dp"
         app:dividerInsetStart="16dp"
         app:dividerInsetEnd="16dp"
         />

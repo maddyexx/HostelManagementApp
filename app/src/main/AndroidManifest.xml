@@ -12,6 +12,18 @@
         android:theme="@style/Theme.FirstFirebaseProject"
         tools:targetApi="31">
         <activity
+            android:name=".RoomViewUser"
+            android:exported="false" />
+        <activity
+            android:name=".reservation_panel"
+            android:exported="false" />
+        <activity
+            android:name=".reservationByUser"
+            android:exported="false" />
+        <activity
+            android:name=".payment_panel"
+            android:exported="false" />
+        <activity
             android:name=".home_panel"
             android:exported="false" />
         <activity

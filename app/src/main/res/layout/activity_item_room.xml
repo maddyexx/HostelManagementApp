@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:layout_gravity="center"
+            android:backgroundTint="#201a30"
+            >
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/bed"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/roomno_navroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="75dp"
+                    android:text="Room No: 1"
+                    />
+                <TextView
+                    android:id="@+id/room_status_navroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Occupied: yes ."
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="75dp"
+                    android:textSize="15sp"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/roomuser_navroom"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Guests: 5"
+                android:textColor="@color/white"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="37dp"
+                android:textSize="15sp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/priceroom_navroom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="price"
+                    android:textSize="22sp"
+                    android:layout_marginEnd="50dp"
+                    android:textColor="@color/white"
+/>
+                <!-- Add other views for room details here -->
+                <!-- Example: TextView for room name, TextView for room number, etc. -->
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="#303030"
+            android:layout_marginLeft="65dp"
+            app:dividerInsetStart="16dp"
+            app:dividerInsetEnd="16dp"
+            />
+</LinearLayout>

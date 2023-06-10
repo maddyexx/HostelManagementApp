@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/custom_bg"
+    tools:context=".reservationByUser">
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/backButton"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="25dp"
+        android:background="@drawable/baseline_arrow_back_24"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="30sp"
+        android:layout_marginStart="30dp"
+        android:text="ROOM RESERVATION"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="17sp"
+        android:layout_marginStart="30dp"
+        android:text="Please fill to Register your Room."
+        android:textColor="@android:color/darker_gray"
+        />
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/input_bg_email"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arrival Data"
+            android:layout_marginTop="20px"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="50px"
+            android:layout_marginBottom="5px"
+            android:textColor="@android:color/white"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/arrivalDateEditText"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:inputType="text"
+                android:textStyle="bold"
+                android:layout_marginTop="2px"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:hint="Enter your Arrival Date"
+                android:textColorHint="#808080"
+                android:background="@drawable/underline_input"
+                android:layout_marginLeft="20dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/input_bg_email"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Guests"
+            android:layout_marginTop="20px"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="50px"
+            android:layout_marginBottom="5px"
+            android:textColor="@android:color/white"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/numberOfGuestsEditText"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:inputType="text"
+                android:textStyle="bold"
+                android:layout_marginTop="2px"
+                android:hint="1,2 or more"
+                android:textColorHint="#808080"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@drawable/underline_input"
+                android:layout_marginLeft="20dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/input_bg_email"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Information"
+            android:layout_marginTop="20px"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="50px"
+            android:layout_marginBottom="5px"
+            android:textColor="@android:color/white"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/contactInformationEditText"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:inputType="text"
+                android:textStyle="bold"
+                android:layout_marginTop="2px"
+                android:hint="Email or Phone"
+                android:textColorHint="#808080"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:background="@drawable/underline_input"
+                android:layout_marginLeft="20dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/input_bg_email"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room Type"
+            android:layout_marginTop="20px"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="50px"
+            android:layout_marginBottom="5px"
+            android:textColor="@android:color/white"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/roomTypeEditText"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:inputType="text"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_marginTop="2px"
+                android:hint="single or double"
+                android:textColorHint="#808080"
+                android:background="@drawable/underline_input"
+                android:layout_marginLeft="20dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/reserveButton"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_btn"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:text="Book Room" />
+
+
+
+</LinearLayout>
