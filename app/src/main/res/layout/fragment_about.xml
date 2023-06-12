@@ -3,38 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".about">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#201a30">
+        android:background="#201a30"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/image_header"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="302dp"
             android:scaleType="centerCrop"
             android:src="@drawable/room_image" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/backButtonContact"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="10dp"
-            android:layout_below="@id/image_header"
-            android:background="@drawable/baseline_arrow_back_24"/>
 
         <TextView
             android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/backButtonContact"
             android:layout_marginTop="24dp"
             android:layout_marginStart="16dp"
             android:text="About Us"
             android:textColor="#ffffff"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <!-- Content -->
@@ -46,6 +38,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:textStyle="italic"
             android:text="Welcome to our hostel! We provide comfortable and affordable accommodation for travelers. Our hostel is located in a convenient location with easy access to popular tourist attractions. Our friendly staff is here to assist you during your stay. Enjoy your visit!"
             android:textColor="#ffffff"
             android:textSize="16sp" />
@@ -56,13 +49,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
+            android:layout_gravity="center"
             android:text="Contact Us"
+            android:textStyle="bold"
             android:textColor="#ffffff"
             android:background="@drawable/confirm_button_bg"
             android:elevation="4dp" />
-    </RelativeLayout>
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="301dp"
+            android:layout_height="283dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-15dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/connect" />
+    </LinearLayout>
 </FrameLayout>

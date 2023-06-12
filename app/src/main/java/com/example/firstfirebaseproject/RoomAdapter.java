@@ -2,6 +2,7 @@ package com.example.firstfirebaseproject;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,15 +70,10 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
+        Log.d("RoomAdapter", "getItemCount: " + arrUsers.size());
         return arrUsers.size();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    public void updateData(ArrayList<UserModel> newEntries) {
-        // Replace the existing data set with the new entries
-        this.entries = newEntries;
-        notifyDataSetChanged();
-    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView r_no, u_no, sta, pr_nav_room;
@@ -86,6 +82,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
             super(itemView);
             r_no = itemView.findViewById(R.id.roomno_navroom);
             u_no = itemView.findViewById(R.id.roomuser_navroom);
+            sta = itemView.findViewById(R.id.room_status_navroom);
             pr_nav_room = itemView.findViewById(R.id.priceroom_navroom);
         }
     }

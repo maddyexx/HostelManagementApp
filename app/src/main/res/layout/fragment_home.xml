@@ -6,93 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".home">
 
-    <!--  <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:gravity="center"
-          android:layout_marginTop="25dp">
-
-          <com.google.android.material.card.MaterialCardView
-              android:id="@+id/card"
-              android:layout_width="200dp"
-              android:layout_height="wrap_content"
-              android:layout_margin="8dp">
-
-              <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical">
-
-                  &lt;!&ndash; Media &ndash;&gt;
-                  <ImageView
-                      android:layout_width="match_parent"
-                      android:layout_height="194dp"
-                      app:srcCompat="@drawable/room_image"
-                      android:scaleType="centerCrop"
-                      android:contentDescription="content_description_media"
-                      />
-
-                  <LinearLayout
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:orientation="vertical"
-                      android:padding="16dp">
-
-                      &lt;!&ndash; Title, secondary and supporting text &ndash;&gt;
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="Add Room"
-                          android:textAppearance="?attr/textAppearanceTitleMedium"
-                          />
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="8dp"
-                          android:text="secondary_text"
-                          android:textAppearance="?attr/textAppearanceBodyMedium"
-                          android:textColor="?android:attr/textColorSecondary"
-                          />
-                      <TextView
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="16dp"
-                          android:text="supporting_text"
-                          android:textAppearance="?attr/textAppearanceBodyMedium"
-                          android:textColor="?android:attr/textColorSecondary"
-                          />
-
-                  </LinearLayout>
-
-                  &lt;!&ndash; Buttons &ndash;&gt;
-                  <LinearLayout
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:layout_margin="8dp"
-                      android:orientation="horizontal">
-                      <com.google.android.material.button.MaterialButton
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:layout_marginEnd="8dp"
-                          android:text="action_1"
-                          style="?attr/borderlessButtonStyle"
-                          />
-                      <com.google.android.material.button.MaterialButton
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="action_2"
-                          style="?attr/borderlessButtonStyle"
-                          />
-                  </LinearLayout>
-
-              </LinearLayout>
-
-          </com.google.android.material.card.MaterialCardView>
-      </LinearLayout>
-
-  -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -104,30 +17,33 @@
             android:orientation="vertical"
             android:gravity="center"
             android:background="#201a30">
-            <TextView
-                android:id="@+id/hostel_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dashboard"
-                android:textColor="@color/white"
-                android:layout_marginTop="25dp"
-                android:textSize="30sp"
-                />
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="300dp"
+                android:layout_marginTop="50dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 app:srcCompat="@mipmap/logo_foreground"/>
             <TextView
                 android:id="@+id/title_description"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Stay, Connect, Explore: Your Home Away from Home"
-                android:textSize="15sp"
-                android:layout_marginVertical="25dp"
-
+                android:text="Stay, Connect, Explore"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:textColor="#4CAF50"
+                />
+            <TextView
+                android:id="@+id/title_description2"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Your Home Away from Home"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="25dp"
                 android:textColor="@color/white"
                 />
 

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".nav_room">
+    tools:context=".nav_room"
+    android:fitsSystemWindows="true">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -13,7 +14,7 @@
         android:background="@drawable/custom_bg">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/custom_bg">
             <androidx.appcompat.widget.Toolbar
@@ -40,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_search_24"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:padding="8dp"/>
 
                 <EditText
@@ -63,7 +64,7 @@
                 android:layout_gravity="right"
                 android:drawableLeft="@drawable/baseline_reservation_border_24"
                 android:backgroundTint="#64A81F"
-                />
+                tools:ignore="RtlHardcoded" />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/roomRecyclerView"
                 android:layout_width="380dp"

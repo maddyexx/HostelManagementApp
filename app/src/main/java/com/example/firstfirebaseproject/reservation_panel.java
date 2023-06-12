@@ -56,21 +56,22 @@ public class reservation_panel extends AppCompatActivity {
         selectMenuItem(selectedMenuItem);
     }
     private void fetchReservationData() {
-        CollectionReference paymentCollectionRef = FirebaseFirestore.getInstance().collection("Reservation_Request");
+        CollectionReference paymentCollectionRef = FirebaseFirestore.getInstance().collection("reservationByUser");
 
         Task<QuerySnapshot> querySnapshotTask = paymentCollectionRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     // Data successfully fetched
-                    ArrayList<RoomReservationModel> arrReservation = new ArrayList<>();
+                    ArrayList<Reservation> arrReservation = new ArrayList<>();
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         // Extract data from the document and create a PaymentModel object
                         String id = document.getId();
-                        String date = document.getString("date");
-                        String room_no = document.getString("room_no");
-                        String uid = document.getString("id");
-                        arrReservation.add(new RoomReservationModel("User Id: "+uid,"Date: "+ date,"Room No: "+ room_no));
+                        String date_res = document.getString("arrivalDate");
+                        String guests_res = document.getString("numberOfGuests");
+                        String contact_res = document.getString("contactInformation");
+                        String room_type_res = document.getString("roomType");
+                        arrReservation.add(new Reservation("Date: "+date_res, "Guests: "+guests_res, contact_res, "Room Type: "+room_type_res));
                     }
                     RecycleReservationAdapter adapter1 = new RecycleReservationAdapter(reservation_panel.this, arrReservation);
                     roomreservation.setAdapter(adapter1);

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ public class user_panel extends AppCompatActivity {
     Toolbar toobar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    MenuItem selectedMenuItem;
     AnimatedBottomBar bottomBar;
 
     @SuppressLint("MissingInflatedId")
@@ -38,24 +40,35 @@ public class user_panel extends AppCompatActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout, toobar,R.string.navigation_open,R.string.navigation_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        bottomNavigationSetUp();
+        selectMenuItem(selectedMenuItem);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new home()).commit();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Menu menu = navigationView.getMenu();
+                selectedMenuItem = menu.findItem(R.id.room_menu);
                 // Handle navigation item clicks here
                 int id = item.getItemId();
 
                 if (id == R.id.home_menu) {
                     loadFragment(new home());
+                    selectMenuItem(item);
                 } else if (id == R.id.about_menu_user) {
                     loadFragment(new about());
+                    selectMenuItem(item);
                 }else if (id == R.id.contact_us_menu_user) {
                     loadFragment(new contact_us());
+                    selectMenuItem(item);
                 }else if (id == R.id.room_menu_user) {
                     loadFragment(new nav_room());
+                    selectMenuItem(item);
                 }
                 else if (id == R.id.logout_menu_user) {
                     startActivity(new Intent(user_panel.this, FragmentActivity.class));
+                }
+                else if (id == R.id.payment_menu_user) {
+                    startActivity(new Intent(user_panel.this, payment_user.class));
                 }
 
                 // Close the navigation drawer
@@ -64,7 +77,16 @@ public class user_panel extends AppCompatActivity {
             }
         });
     }
-        private void bottomNavigationSetUp() {
+    private void selectMenuItem(MenuItem item) {
+        if (selectedMenuItem != null) {
+            selectedMenuItem.setChecked(false);
+        }
+        selectedMenuItem = item;
+        if (selectedMenuItem != null) {
+            selectedMenuItem.setChecked(true);
+        }
+    }
+    private void bottomNavigationSetUp() {
             bottomBar.setBadgeTextColor(ContextCompat.getColor(this, R.color.white));
             bottomBar.setIndicatorColor(ContextCompat.getColor(this, R.color.white));
             bottomBar.setTabColor(ContextCompat.getColor(this, R.color.white));
@@ -88,7 +110,7 @@ public class user_panel extends AppCompatActivity {
                             break;
                         case R.id.item_4:
                             // Handle selection of tab item 3
-
+                            startActivity(new Intent(user_panel.this, payment_user.class));
                             break;
                         case R.id.item_5:
                             // Handle selection of tab item 3
@@ -105,7 +127,7 @@ public class user_panel extends AppCompatActivity {
             });
         }
     private void loadFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
     }

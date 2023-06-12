@@ -128,7 +128,7 @@ public class SignUpFragment extends Fragment {
                                 QuerySnapshot querySnapshot = task.getResult();
                                 if (querySnapshot != null && !querySnapshot.isEmpty()) {
                                     // Email already exists, show error message to the user
-                                    Toast.makeText(getActivity(), "Email already Exists", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getActivity(), "Email already Exists", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
                             }

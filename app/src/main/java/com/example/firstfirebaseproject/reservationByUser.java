@@ -32,8 +32,7 @@ public class reservationByUser extends AppCompatActivity {
 
     private void initComponents() {
         db = FirebaseFirestore.getInstance();
-        reserveButton = findViewById(R.id.reserveButton);
-        back = findViewById(R.id.backButton);
+        reserveButton = findViewById(R.id.reserveButtonbookroom);
         arrivalDateEditText = findViewById(R.id.arrivalDateEditText);
         numberOfGuestsEditText = findViewById(R.id.numberOfGuestsEditText);
         contactInformationEditText = findViewById(R.id.contactInformationEditText);
@@ -46,7 +45,7 @@ public class reservationByUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String arrivalDate = arrivalDateEditText.getText().toString();
-                int numberOfGuests = Integer.parseInt(numberOfGuestsEditText.getText().toString());
+                String numberOfGuests = numberOfGuestsEditText.getText().toString();
                 String contactInformation = contactInformationEditText.getText().toString();
                 String roomType = roomTypeEditText.getText().toString();
 
@@ -72,12 +71,6 @@ public class reservationByUser extends AppCompatActivity {
                                 Toast.makeText(reservationByUser.this, "Failed to make a reservation", Toast.LENGTH_SHORT).show();
                             }
                         });
-            }
-        });
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(reservationByUser.this, user_panel.class));
             }
         });
     }

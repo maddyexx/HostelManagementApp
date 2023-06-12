@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="220px"
+        android:layout_height="350px"
         android:layout_gravity="center"
         android:backgroundTint="#201a30"
         >
@@ -36,7 +36,7 @@
                 android:text="Room No: 1"
                 />
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/date_res"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Date: 12-03-2023"
@@ -46,10 +46,28 @@
                 android:textSize="15sp"
                 />
             <TextView
-                android:id="@+id/userid"
+                android:id="@+id/room_type_res"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="User Id: 5"
+                android:text="Room Type: Single"
+                android:textColor="@color/white"
+                android:layout_marginLeft="75dp"
+                android:textSize="15sp"
+                />
+            <TextView
+                android:id="@+id/contact_res"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="hammad@gmail.com"
+                android:textColor="@color/white"
+                android:layout_marginLeft="75dp"
+                android:textSize="15sp"
+                />
+            <TextView
+                android:id="@+id/guests_no_res"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="No of Guests: 5"
                 android:textColor="@color/white"
                 android:layout_marginLeft="75dp"
                 android:textSize="15sp"

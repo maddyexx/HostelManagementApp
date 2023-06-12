@@ -66,10 +66,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="price"
-                    android:textSize="22sp"
-                    android:layout_marginEnd="50dp"
-                    android:textColor="@color/white"
+                    android:text="Rs"
+                    android:padding="10dp"
+                    android:textStyle="bold|italic"
+                    android:textSize="20sp"
+                    android:background="@drawable/input_bg_email"
+                    android:layout_marginEnd="15dp"
+                    android:textColor="#4CAF50"
 />
                 <!-- Add other views for room details here -->
                 <!-- Example: TextView for room name, TextView for room number, etc. -->

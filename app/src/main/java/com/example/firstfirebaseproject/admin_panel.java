@@ -276,11 +276,6 @@ public class admin_panel extends AppCompatActivity {
         selectedMenuItem = item;
         selectedMenuItem.setChecked(true);
     }
-//    private void loadFragment(Fragment fragment) {
-//        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.container, fragment)
-//                .commit();
-//    }
     private void showPopupForm() {
         Dialog dialog = new Dialog(admin_panel.this);
         dialog.setContentView(R.layout.popup_form);
@@ -314,7 +309,7 @@ public class admin_panel extends AppCompatActivity {
                     rooms.setGuests_Rooms(guest_number);
                     rooms.setRoom_type(room_t_value);
                     rooms.setPrice(price_value);
-                    if (occupy_value.equalsIgnoreCase("Yes")) {
+                    if (occupy_value.equalsIgnoreCase("Yes") || occupy_value.equalsIgnoreCase("No")) {
                         CollectionReference PaymentsCollection = db.collection("payment");
                         String p_id;
                         p_id = rooms.getRoom_no_Rooms() + "_" + PaymentsCollection.document().getId();
@@ -349,7 +344,7 @@ public class admin_panel extends AppCompatActivity {
                                             Toast.makeText(admin_panel.this, "Invalid ID", Toast.LENGTH_SHORT).show();
                                             return; // Exit the method to prevent further execution
                                         }
-                                        if (occupy_value.equals("Yes") || occupy_value.equals("no") || occupy_value.equals("yes") || occupy_value.equals("No") || room_t_value.equals("Single") || room_t_value.equals("Double")) {
+                                        if ( room_t_value.equalsIgnoreCase("Single") || room_t_value.equalsIgnoreCase("Double")) {
                                             RoomsCollection.document(id).set(rooms)
                                                     .addOnCompleteListener(task -> {
                                                         if (task.isSuccessful()) {
@@ -364,7 +359,7 @@ public class admin_panel extends AppCompatActivity {
                                                         }
                                                     });
                                         }else {
-                                            Toast.makeText(admin_panel.this, "Only Yes or No accepted in Occupied & Single or Double accepted in Room Type", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(admin_panel.this, "Only Single or Double accepted in Room Type", Toast.LENGTH_SHORT).show();
                                         }
                                         dialog.dismiss();
                                     }else {

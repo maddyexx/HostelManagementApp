@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class RecycleReservationAdapter extends RecyclerView.Adapter<RecycleReservationAdapter.ViewHolder>{
 
     Context context;
-    ArrayList<RoomReservationModel> arrReservation;
-    RecycleReservationAdapter(Context context, ArrayList<RoomReservationModel> arrReservation){
+    ArrayList<Reservation> arrReservation;
+    RecycleReservationAdapter(Context context, ArrayList<Reservation> arrReservation){
         this.context = context;
         this.arrReservation = arrReservation;
     }
@@ -28,9 +28,10 @@ public class RecycleReservationAdapter extends RecyclerView.Adapter<RecycleReser
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.r_no.setText(String.valueOf(arrReservation.get(position).room_no));
-        holder.u_no.setText(String.valueOf(arrReservation.get(position).user_id));
-        holder.sta.setText(arrReservation.get(position).date_of_res);
+        holder.date_r.setText(String.valueOf(arrReservation.get(position).getArrivalDate()));
+        holder.contact_r.setText(String.valueOf(arrReservation.get(position).getContactInformation()));
+        holder.guest_res.setText(arrReservation.get(position).getNumberOfGuests());
+        holder.roomType_res.setText(arrReservation.get(position).getRoomType());
     }
 
     @Override
@@ -39,12 +40,13 @@ public class RecycleReservationAdapter extends RecyclerView.Adapter<RecycleReser
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView r_no, u_no, sta;
+        TextView date_r, contact_r, guest_res, roomType_res;
         public ViewHolder(View itemView){
             super(itemView)  ;
-            r_no = itemView.findViewById(R.id.roomno);
-            u_no = itemView.findViewById(R.id.userid);
-            sta = itemView.findViewById(R.id.date);
+            date_r = itemView.findViewById(R.id.date_res);
+            contact_r = itemView.findViewById(R.id.contact_res);
+            guest_res = itemView.findViewById(R.id.guests_no_res);
+            roomType_res = itemView.findViewById(R.id.room_type_res);
         }
     }
 }

@@ -18,6 +18,9 @@
             android:name=".reservation_panel"
             android:exported="false" />
         <activity
+            android:name=".payment_user"
+            android:exported="false" />
+        <activity
             android:name=".reservationByUser"
             android:exported="false" />
         <activity

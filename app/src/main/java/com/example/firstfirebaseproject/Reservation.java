@@ -2,7 +2,7 @@ package com.example.firstfirebaseproject;
 
 public class Reservation {
     private String arrivalDate;
-    private int numberOfGuests;
+    private String numberOfGuests;
     private String contactInformation;
     private String roomType;
 
@@ -10,7 +10,7 @@ public class Reservation {
         // Default constructor required for Firestore
     }
 
-    public Reservation(String arrivalDate, int numberOfGuests, String contactInformation, String roomType) {
+    public Reservation(String arrivalDate, String numberOfGuests, String contactInformation, String roomType) {
         this.arrivalDate = arrivalDate;
         this.numberOfGuests = numberOfGuests;
         this.contactInformation = contactInformation;
@@ -25,11 +25,11 @@ public class Reservation {
         this.arrivalDate = arrivalDate;
     }
 
-    public int getNumberOfGuests() {
+    public String getNumberOfGuests() {
         return numberOfGuests;
     }
 
-    public void setNumberOfGuests(int numberOfGuests) {
+    public void setNumberOfGuests(String numberOfGuests) {
         this.numberOfGuests = numberOfGuests;
     }
 
