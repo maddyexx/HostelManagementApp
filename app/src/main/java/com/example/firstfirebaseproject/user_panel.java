@@ -68,7 +68,8 @@ public class user_panel extends AppCompatActivity {
                     startActivity(new Intent(user_panel.this, FragmentActivity.class));
                 }
                 else if (id == R.id.payment_menu_user) {
-                    startActivity(new Intent(user_panel.this, payment_user.class));
+                    loadFragment(new PaymentFragmentUser());
+                    selectMenuItem(item);
                 }
 
                 // Close the navigation drawer
@@ -110,7 +111,7 @@ public class user_panel extends AppCompatActivity {
                             break;
                         case R.id.item_4:
                             // Handle selection of tab item 3
-                            startActivity(new Intent(user_panel.this, payment_user.class));
+                            loadFragment(new PaymentFragmentUser());
                             break;
                         case R.id.item_5:
                             // Handle selection of tab item 3

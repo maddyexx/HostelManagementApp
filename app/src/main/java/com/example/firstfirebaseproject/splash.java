@@ -29,7 +29,7 @@ public class splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(splash.this, FragmentActivity.class);
+                Intent intent = new Intent(splash.this, user_panel.class);
                 startActivity(intent);
                 finish(); // Finish the current activity to prevent going back to it
             }

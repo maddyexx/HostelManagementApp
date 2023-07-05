@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@drawable/custom_bg"
-    tools:context=".payment_user">
+>
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -69,4 +69,4 @@
         android:textColor="#ffffff"
         android:background="@drawable/confirm_button_bg"/>
 </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

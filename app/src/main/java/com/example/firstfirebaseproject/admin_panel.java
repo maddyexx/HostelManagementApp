@@ -380,7 +380,7 @@ public class admin_panel extends AppCompatActivity {
     private void fetchRoomData() {
         CollectionReference paymentCollectionRef = FirebaseFirestore.getInstance().collection("Rooms");
 
-        Task<QuerySnapshot> querySnapshotTask = paymentCollectionRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+         paymentCollectionRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
